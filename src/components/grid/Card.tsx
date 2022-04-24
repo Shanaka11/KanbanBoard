@@ -56,7 +56,6 @@ const Card:React.FC<CardProps> = ({ cardData, newCard, handleAddNewCardCallback 
           <input
             required
             type='text'
-            defaultValue={cardData.title}
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             autoFocus

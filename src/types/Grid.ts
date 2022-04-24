@@ -5,7 +5,12 @@ export interface HeaderProps{
 
 export interface SectionProps{
     data: Stratergy,
-    cols: Col[]
+    cols: Col[],
+    newStratergy?: boolean,
+    handleCreate: (stratergy:Stratergy) => void,
+    handleUpdate: (stratergy:Stratergy) => void,
+    handleDelete: (stratergy:Stratergy) => void,
+    handleCancel?: () => void
 }
 
 export interface CardProps{

@@ -7,6 +7,7 @@ import { Stratergy } from "./types/Grid"
 
 // Data
 import { headerData, stratergyData} from './Content'
+import { SectionAdd } from "./components/grid/Grid.styled"
 
 function App() {
 
@@ -14,7 +15,40 @@ function App() {
   // All related data is fetched when the application is launched after than only the related data will be fetched within the cell or card components
   const [header] = useState(headerData)
   const [stratergy, setStratergy] = useState(stratergyData)
-  // const [boardData, setBoardData] = useState(data)
+  const [newStratergy, setNewStratergy] = useState(false)
+  
+  // Create Stratergy
+  const handleCreateStratergy = (data:Stratergy) => {
+    let tempData:Stratergy[] = JSON.parse(JSON.stringify(stratergy))
+    tempData.push(data)
+    setStratergy(tempData)
+    setNewStratergy(false)
+  }
+  // Update Stratergy
+  const handleUpdateStratergy = (data:Stratergy) => {
+    let tempData:Stratergy[] = JSON.parse(JSON.stringify(stratergy))
+    tempData = tempData.filter((stratergy:Stratergy) => {
+      if(stratergy.id === data.id){
+        return data
+      }
+      return stratergy
+    })
+    setStratergy(tempData)
+  }
+  // Delete Stratergy
+  const handleDeleteStratergy = (data:Stratergy) => {
+    let tempData:Stratergy[] = JSON.parse(JSON.stringify(stratergy))
+    tempData = tempData.filter((stratergy:Stratergy) => {
+       console.log(stratergy.id , data.id)
+       return stratergy.id !== data.id
+    })
+    setStratergy(tempData)
+  }
+  // Handle Cancel
+  const handleCancel = () => {
+    setNewStratergy(false)
+  }
+  
   
   return (
     <Container >
@@ -23,15 +57,44 @@ function App() {
         stratergy.map((item:Stratergy) => {
           return (
             <Fragment key={item.id}>
-              <SectionContextProvider>
-                <Section 
-                  data={item}
-                  cols={header}
-                />
-              </SectionContextProvider>
+            <SectionContextProvider>
+              <Section
+                data={item}
+                cols={header}
+                handleCreate={handleCreateStratergy}
+                handleUpdate={handleUpdateStratergy}
+                handleDelete={handleDeleteStratergy}
+              />
+            </SectionContextProvider>
+            {/* Add New Section Component Goes Here */}
             </Fragment>
           )
         })
+      }
+      {
+        !newStratergy ? (
+          <SectionAdd
+            onClick={(event) => setNewStratergy(true)}
+          >
+            + Add New Stratergy
+          </SectionAdd>
+        ) : (
+          <SectionContextProvider>
+            <Section
+                  data={{
+                    id: Math.floor(Math.random() * 1000),
+                    title: ''
+                  }}
+                  cols={[]}
+                  newStratergy={newStratergy}
+                  handleCreate={handleCreateStratergy}
+                  handleUpdate={handleUpdateStratergy}
+                  handleDelete={handleDeleteStratergy}
+                  handleCancel={handleCancel}
+            /> 
+          </SectionContextProvider>
+        )
+
       }
     </Container>
   )
