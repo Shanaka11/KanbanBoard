@@ -42,7 +42,7 @@ const Cell:React.FC<CellProps> = ({ stratergyId, colId, data, handleCardOnDropCa
                 newCard && (
                     <Card 
                         cardData={{
-                            id: -1,
+                            id: Math.floor(Math.random() * 1000),
                             colsId: colId,
                             stratergyId: stratergyId,
                             description: '',

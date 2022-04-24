@@ -18,7 +18,7 @@ export const GridCell = styled.div`
     position: relative;
     background-color: blue;
     min-width: 300px;
-    min-height: 300px;
+    height: 300px;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ export const GridCard = styled.div`
     padding: 8px;
     background: yellow;
     width: 250px;
-    min-height: 20px;
+    // min-height: 40px;
     cursor: pointer;
     margin: 4px 0;
     position: relative;

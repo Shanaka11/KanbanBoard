@@ -35,6 +35,9 @@ const Card:React.FC<CardProps> = ({ cardData, newCard, handleAddNewCardCallback 
   }
 
   const handleCancelOnClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if(newCard && handleAddNewCardCallback){
+      handleAddNewCardCallback()
+    }
     setEdit(false)
   }
 
