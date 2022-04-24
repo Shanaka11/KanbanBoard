@@ -7,6 +7,7 @@ const Card:React.FC<CardProps> = ({ cardData, newCard, handleAddNewCardCallback 
   
   const [edit, setEdit] = useState(newCard)
   const [title, setTitle] = useState(cardData.title)
+  const [hover, setHover] = useState(false)
 
   const { dispatch } = useContext(SectionContext)
 
@@ -50,6 +51,8 @@ const Card:React.FC<CardProps> = ({ cardData, newCard, handleAddNewCardCallback 
     <GridCard 
         draggable 
         onDragStart={ handleOnDragStart }
+        onMouseEnter={ () => setHover(true)}
+        onMouseLeave={ () => setHover(false)}
     >
       { edit ?
         <form onSubmit={handleFormSubmit}>
@@ -78,11 +81,13 @@ const Card:React.FC<CardProps> = ({ cardData, newCard, handleAddNewCardCallback 
             onClick={handleTitleOnClick}>
               {cardData.title}
           </p>
-          <CardClose
-            onClick={handleOnDelete}
-          >
-            Delete
-          </CardClose>
+          { hover &&
+            <CardClose
+              onClick={handleOnDelete}
+            >
+              Delete
+            </CardClose>
+          }
         </>
       }
         

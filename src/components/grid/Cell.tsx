@@ -6,6 +6,7 @@ import { CardAdd, GridCell } from "./Grid.styled"
 const Cell:React.FC<CellProps> = ({ stratergyId, colId, data, handleCardOnDropCallback }) => {
     // Should have the functionality to add new Matrices
     const [newCard, setNewCard] = useState(false)
+    const [hover, setHover] = useState(false)
 
     const handleOnDrop = (e:React.DragEvent<HTMLDivElement>) => {
         const droppedCardData:Matric = JSON.parse(e.dataTransfer.getData('card'))
@@ -29,6 +30,8 @@ const Cell:React.FC<CellProps> = ({ stratergyId, colId, data, handleCardOnDropCa
         <GridCell 
             onDragOver={ handleOnDragOver }
             onDrop={ handleOnDrop }
+            onMouseEnter={ () => setHover(true)}
+            onMouseLeave={ () => setHover(false)}
         >
             { data.filter((matric:Matric) => { return matric.colsId === colId}).map((item:Matric) => {
                 return(
@@ -54,11 +57,13 @@ const Cell:React.FC<CellProps> = ({ stratergyId, colId, data, handleCardOnDropCa
                     />
                 )
             }
-            <CardAdd
-                onClick={handleAddClick}
-            >
-                + Add New Item
-            </CardAdd>
+            { hover &&
+                <CardAdd
+                    onClick={handleAddClick}
+                >
+                    + Add New Item
+                </CardAdd>
+            }
         </GridCell>
     )
 }

@@ -25,6 +25,11 @@ export const SectionClose = styled.button`
     border: none;
     background-color: red;
     color: white;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+        background-color: #8f0101;
+    }
 `
 
 export const GridRow = styled.div`
@@ -73,6 +78,11 @@ export const CardClose = styled.button`
     // border-radius: 5px;
     background-color: red;
     color: white;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+        background-color: #8f0101;
+    }
 `
 
 
@@ -86,6 +96,11 @@ export const CardAdd = styled.button`
     // border-radius: 5px;
     background-color: red;
     color: white;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+        background-color: #8f0101;
+    }
 `
 
 export const SectionAdd = styled.button`

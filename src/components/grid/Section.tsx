@@ -10,6 +10,7 @@ const Section:React.FC<SectionProps> = ({ data, cols, newStratergy, handleCreate
   const {matrices, setMatrices} = useContext(SectionContext)
   const [title, setTitle] = useState(data.title)
   const [edit, setEdit] = useState(newStratergy)
+  const [hover, setHover] = useState(false)
 
   useEffect(() => {
     setMatrices(matData.filter((matric:Matric) => {
@@ -61,7 +62,10 @@ const Section:React.FC<SectionProps> = ({ data, cols, newStratergy, handleCreate
 
   return (
       <>
-        <SectionStyled>
+        <SectionStyled
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
           { 
             edit ? 
             <form onSubmit={handleFormSubmit}>
@@ -92,7 +96,7 @@ const Section:React.FC<SectionProps> = ({ data, cols, newStratergy, handleCreate
             </p> 
           }
           {
-            !edit &&  
+            !edit && hover &&
               <SectionClose
                 onClick={handleCloseOnClick}
               >
