@@ -3,12 +3,17 @@ import styled from "styled-components";
 export const SectionStyled = styled.div`
     width: 1224px;
     max-width: 100%;
-    height: 30px;
-    background-color: red;
+    height: 35px;
+    background-color: #0179BF;
+    color: white;
     display: grid;
     place-items: center;
     position: sticky;
-    left: 0
+    left: 0;
+
+    p {
+        cursor: pointer;
+    }
 `
 
 export const SectionClose = styled.button`
@@ -18,7 +23,7 @@ export const SectionClose = styled.button`
     right: 4px;
     top: 4px;
     border: none;
-    background-color: blue;
+    background-color: red;
     color: white;
 `
 
@@ -30,7 +35,7 @@ export const GridCell = styled.div`
     margin: 0 4px;
     padding: 4px;
     position: relative;
-    background-color: blue;
+    background-color: #EBECF0;
     min-width: 300px;
     height: 300px;
     overflow-y: scroll;
@@ -49,12 +54,13 @@ export const GridCell = styled.div`
 
 export const GridCard = styled.div`
     padding: 8px;
-    background: yellow;
+    background: #FFFFFF;
     width: 250px;
-    // min-height: 40px;
+    box-shadow: 0 1px 0 #091e4240;
     cursor: pointer;
     margin: 4px 0;
     position: relative;
+    font-size: 0.9rem
 `
 
 export const CardClose = styled.button`
@@ -88,8 +94,13 @@ export const SectionAdd = styled.button`
     padding: 5px;
     cursor: pointer;
     border: none;
-    background-color: red;
+    background-color: #0179BF;
     color: white;
     position: sticky;
-    left: 0
+    left: 0;
+    transition: background-color 0.2s ease-in;
+
+    &:hover{
+        background-color: #015b8f;
+    }
 `

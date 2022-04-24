@@ -7,9 +7,7 @@ const Header:React.FC<HeaderProps> = ({ headerItems }) => {
         {headerItems.map((headerItem: Col) => {
             return (
                 <HeaderItem key={headerItem.title}>
-                    <div>{headerItem.title}</div>
-                    {/* To show the count */}
-                    {/* <div>({headerItem.items})</div> */}
+                    <p>{headerItem.title}</p>
                 </HeaderItem>
             )
         })}

@@ -8,13 +8,13 @@ export const HeaderItem = styled.div`
   width: 300px;
   min-width: 300px;
   height: 40px;
-  background-color: #ebf2fc;
+  background-color: #EBECF0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 4px;
   margin: 0 4px;
-  // border: 1px solid #d6d6d6;
+  font-weight: bold;
 
   &:first-child {
     margin-left: 0;
